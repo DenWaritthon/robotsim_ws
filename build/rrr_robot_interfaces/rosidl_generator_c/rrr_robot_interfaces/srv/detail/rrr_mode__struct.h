@@ -19,12 +19,14 @@ extern "C"
 
 // Include directives for member types
 // Member 'mode_call'
+// Member 'ref'
 #include "rosidl_runtime_c/string.h"
 
 /// Struct defined in srv/RRRMode in the package rrr_robot_interfaces.
 typedef struct rrr_robot_interfaces__srv__RRRMode_Request
 {
   rosidl_runtime_c__String mode_call;
+  rosidl_runtime_c__String ref;
 } rrr_robot_interfaces__srv__RRRMode_Request;
 
 // Struct for a sequence of rrr_robot_interfaces__srv__RRRMode_Request.

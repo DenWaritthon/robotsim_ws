@@ -14,6 +14,7 @@
 
 // Include directives for member types
 // Member `mode_call`
+// Member `ref`
 #include "rosidl_runtime_c/string_functions.h"
 
 #ifdef __cplusplus
@@ -35,7 +36,7 @@ void rrr_robot_interfaces__srv__RRRMode_Request__rosidl_typesupport_introspectio
   rrr_robot_interfaces__srv__RRRMode_Request__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember rrr_robot_interfaces__srv__RRRMode_Request__rosidl_typesupport_introspection_c__RRRMode_Request_message_member_array[1] = {
+static rosidl_typesupport_introspection_c__MessageMember rrr_robot_interfaces__srv__RRRMode_Request__rosidl_typesupport_introspection_c__RRRMode_Request_message_member_array[2] = {
   {
     "mode_call",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
@@ -52,13 +53,30 @@ static rosidl_typesupport_introspection_c__MessageMember rrr_robot_interfaces__s
     NULL,  // fetch(index, &value) function pointer
     NULL,  // assign(index, value) function pointer
     NULL  // resize(index) function pointer
+  },
+  {
+    "ref",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(rrr_robot_interfaces__srv__RRRMode_Request, ref),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers rrr_robot_interfaces__srv__RRRMode_Request__rosidl_typesupport_introspection_c__RRRMode_Request_message_members = {
   "rrr_robot_interfaces__srv",  // message namespace
   "RRRMode_Request",  // message name
-  1,  // number of fields
+  2,  // number of fields
   sizeof(rrr_robot_interfaces__srv__RRRMode_Request),
   rrr_robot_interfaces__srv__RRRMode_Request__rosidl_typesupport_introspection_c__RRRMode_Request_message_member_array,  // message members
   rrr_robot_interfaces__srv__RRRMode_Request__rosidl_typesupport_introspection_c__RRRMode_Request_init_function,  // function to initialize message memory (memory has to be allocated)

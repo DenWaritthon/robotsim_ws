@@ -82,13 +82,29 @@ namespace builder
 class Init_RRRTargetPath_Response_all_done
 {
 public:
-  Init_RRRTargetPath_Response_all_done()
-  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
+  explicit Init_RRRTargetPath_Response_all_done(::rrr_robot_interfaces::srv::RRRTargetPath_Response & msg)
+  : msg_(msg)
   {}
   ::rrr_robot_interfaces::srv::RRRTargetPath_Response all_done(::rrr_robot_interfaces::srv::RRRTargetPath_Response::_all_done_type arg)
   {
     msg_.all_done = std::move(arg);
     return std::move(msg_);
+  }
+
+private:
+  ::rrr_robot_interfaces::srv::RRRTargetPath_Response msg_;
+};
+
+class Init_RRRTargetPath_Response_message
+{
+public:
+  Init_RRRTargetPath_Response_message()
+  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
+  {}
+  Init_RRRTargetPath_Response_all_done message(::rrr_robot_interfaces::srv::RRRTargetPath_Response::_message_type arg)
+  {
+    msg_.message = std::move(arg);
+    return Init_RRRTargetPath_Response_all_done(msg_);
   }
 
 private:
@@ -106,7 +122,7 @@ template<>
 inline
 auto build<::rrr_robot_interfaces::srv::RRRTargetPath_Response>()
 {
-  return rrr_robot_interfaces::srv::builder::Init_RRRTargetPath_Response_all_done();
+  return rrr_robot_interfaces::srv::builder::Init_RRRTargetPath_Response_message();
 }
 
 }  // namespace rrr_robot_interfaces

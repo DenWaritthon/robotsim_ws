@@ -271,6 +271,8 @@ cdr_serialize(
   const rrr_robot_interfaces::srv::RRRTargetPath_Response & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
+  // Member: message
+  cdr << ros_message.message;
   // Member: all_done
   cdr << (ros_message.all_done ? true : false);
   return true;
@@ -282,6 +284,9 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   rrr_robot_interfaces::srv::RRRTargetPath_Response & ros_message)
 {
+  // Member: message
+  cdr >> ros_message.message;
+
   // Member: all_done
   {
     uint8_t tmp;
@@ -305,6 +310,10 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
+  // Member: message
+  current_alignment += padding +
+    eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+    (ros_message.message.size() + 1);
   // Member: all_done
   {
     size_t item_size = sizeof(ros_message.all_done);
@@ -334,6 +343,19 @@ max_serialized_size_RRRTargetPath_Response(
   full_bounded = true;
   is_plain = true;
 
+
+  // Member: message
+  {
+    size_t array_size = 1;
+
+    full_bounded = false;
+    is_plain = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
+  }
 
   // Member: all_done
   {

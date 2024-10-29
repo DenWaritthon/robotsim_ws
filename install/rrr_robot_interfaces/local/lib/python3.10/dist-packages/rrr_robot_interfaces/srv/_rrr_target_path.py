@@ -197,14 +197,17 @@ class RRRTargetPath_Response(metaclass=Metaclass_RRRTargetPath_Response):
     """Message class 'RRRTargetPath_Response'."""
 
     __slots__ = [
+        '_message',
         '_all_done',
     ]
 
     _fields_and_field_types = {
+        'message': 'string',
         'all_done': 'boolean',
     }
 
     SLOT_TYPES = (
+        rosidl_parser.definition.UnboundedString(),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
     )
 
@@ -212,6 +215,7 @@ class RRRTargetPath_Response(metaclass=Metaclass_RRRTargetPath_Response):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
+        self.message = kwargs.get('message', str())
         self.all_done = kwargs.get('all_done', bool())
 
     def __repr__(self):
@@ -243,6 +247,8 @@ class RRRTargetPath_Response(metaclass=Metaclass_RRRTargetPath_Response):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
+        if self.message != other.message:
+            return False
         if self.all_done != other.all_done:
             return False
         return True
@@ -251,6 +257,19 @@ class RRRTargetPath_Response(metaclass=Metaclass_RRRTargetPath_Response):
     def get_fields_and_field_types(cls):
         from copy import copy
         return copy(cls._fields_and_field_types)
+
+    @builtins.property
+    def message(self):
+        """Message field 'message'."""
+        return self._message
+
+    @message.setter
+    def message(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, str), \
+                "The 'message' field must be of type 'str'"
+        self._message = value
 
     @builtins.property
     def all_done(self):

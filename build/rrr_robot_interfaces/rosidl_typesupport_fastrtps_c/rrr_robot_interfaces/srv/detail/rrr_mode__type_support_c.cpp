@@ -34,8 +34,8 @@ extern "C"
 {
 #endif
 
-#include "rosidl_runtime_c/string.h"  // mode_call
-#include "rosidl_runtime_c/string_functions.h"  // mode_call
+#include "rosidl_runtime_c/string.h"  // mode_call, ref
+#include "rosidl_runtime_c/string_functions.h"  // mode_call, ref
 
 // forward declare type support functions
 
@@ -54,6 +54,20 @@ static bool _RRRMode_Request__cdr_serialize(
   // Field name: mode_call
   {
     const rosidl_runtime_c__String * str = &ros_message->mode_call;
+    if (str->capacity == 0 || str->capacity <= str->size) {
+      fprintf(stderr, "string capacity not greater than size\n");
+      return false;
+    }
+    if (str->data[str->size] != '\0') {
+      fprintf(stderr, "string not null-terminated\n");
+      return false;
+    }
+    cdr << str->data;
+  }
+
+  // Field name: ref
+  {
+    const rosidl_runtime_c__String * str = &ros_message->ref;
     if (str->capacity == 0 || str->capacity <= str->size) {
       fprintf(stderr, "string capacity not greater than size\n");
       return false;
@@ -93,6 +107,22 @@ static bool _RRRMode_Request__cdr_deserialize(
     }
   }
 
+  // Field name: ref
+  {
+    std::string tmp;
+    cdr >> tmp;
+    if (!ros_message->ref.data) {
+      rosidl_runtime_c__String__init(&ros_message->ref);
+    }
+    bool succeeded = rosidl_runtime_c__String__assign(
+      &ros_message->ref,
+      tmp.c_str());
+    if (!succeeded) {
+      fprintf(stderr, "failed to assign string into field 'ref'\n");
+      return false;
+    }
+  }
+
   return true;
 }  // NOLINT(readability/fn_size)
 
@@ -114,6 +144,10 @@ size_t get_serialized_size_rrr_robot_interfaces__srv__RRRMode_Request(
   current_alignment += padding +
     eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
     (ros_message->mode_call.size + 1);
+  // field.name ref
+  current_alignment += padding +
+    eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+    (ros_message->ref.size + 1);
 
   return current_alignment - initial_alignment;
 }
@@ -155,6 +189,18 @@ size_t max_serialized_size_rrr_robot_interfaces__srv__RRRMode_Request(
         1;
     }
   }
+  // member: ref
+  {
+    size_t array_size = 1;
+
+    full_bounded = false;
+    is_plain = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
+  }
 
   size_t ret_val = current_alignment - initial_alignment;
   if (is_plain) {
@@ -164,7 +210,7 @@ size_t max_serialized_size_rrr_robot_interfaces__srv__RRRMode_Request(
     using DataType = rrr_robot_interfaces__srv__RRRMode_Request;
     is_plain =
       (
-      offsetof(DataType, mode_call) +
+      offsetof(DataType, ref) +
       last_member_size
       ) == ret_val;
   }

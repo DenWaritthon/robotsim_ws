@@ -56,13 +56,16 @@ class RRRMode_Request(metaclass=Metaclass_RRRMode_Request):
 
     __slots__ = [
         '_mode_call',
+        '_ref',
     ]
 
     _fields_and_field_types = {
         'mode_call': 'string',
+        'ref': 'string',
     }
 
     SLOT_TYPES = (
+        rosidl_parser.definition.UnboundedString(),  # noqa: E501
         rosidl_parser.definition.UnboundedString(),  # noqa: E501
     )
 
@@ -71,6 +74,7 @@ class RRRMode_Request(metaclass=Metaclass_RRRMode_Request):
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.mode_call = kwargs.get('mode_call', str())
+        self.ref = kwargs.get('ref', str())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -103,6 +107,8 @@ class RRRMode_Request(metaclass=Metaclass_RRRMode_Request):
             return False
         if self.mode_call != other.mode_call:
             return False
+        if self.ref != other.ref:
+            return False
         return True
 
     @classmethod
@@ -122,6 +128,19 @@ class RRRMode_Request(metaclass=Metaclass_RRRMode_Request):
                 isinstance(value, str), \
                 "The 'mode_call' field must be of type 'str'"
         self._mode_call = value
+
+    @builtins.property
+    def ref(self):
+        """Message field 'ref'."""
+        return self._ref
+
+    @ref.setter
+    def ref(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, str), \
+                "The 'ref' field must be of type 'str'"
+        self._ref = value
 
 
 # Import statements for member types

@@ -39,16 +39,19 @@ struct RRRMode_Request_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->mode_call = "";
+      this->ref = "";
     }
   }
 
   explicit RRRMode_Request_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : mode_call(_alloc)
+  : mode_call(_alloc),
+    ref(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->mode_call = "";
+      this->ref = "";
     }
   }
 
@@ -56,12 +59,21 @@ struct RRRMode_Request_
   using _mode_call_type =
     std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>;
   _mode_call_type mode_call;
+  using _ref_type =
+    std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>;
+  _ref_type ref;
 
   // setters for named parameter idiom
   Type & set__mode_call(
     const std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> & _arg)
   {
     this->mode_call = _arg;
+    return *this;
+  }
+  Type & set__ref(
+    const std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> & _arg)
+  {
+    this->ref = _arg;
     return *this;
   }
 
@@ -108,6 +120,9 @@ struct RRRMode_Request_
   bool operator==(const RRRMode_Request_ & other) const
   {
     if (this->mode_call != other.mode_call) {
+      return false;
+    }
+    if (this->ref != other.ref) {
       return false;
     }
     return true;

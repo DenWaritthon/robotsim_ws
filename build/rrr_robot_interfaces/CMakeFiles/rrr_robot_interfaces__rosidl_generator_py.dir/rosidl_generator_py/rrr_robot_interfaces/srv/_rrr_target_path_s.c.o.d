@@ -208,5 +208,8 @@ CMakeFiles/rrr_robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/rrr
  /usr/include/python3.10/numpy/__multiarray_api.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
  /home/waritt/robotsim_ws/build/rrr_robot_interfaces/rosidl_generator_c/rrr_robot_interfaces/srv/detail/rrr_target_path__struct.h \
+ /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
+ /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
  /home/waritt/robotsim_ws/build/rrr_robot_interfaces/rosidl_generator_c/rrr_robot_interfaces/srv/detail/rrr_target_path__functions.h \
- /home/waritt/robotsim_ws/build/rrr_robot_interfaces/rosidl_generator_c/rrr_robot_interfaces/msg/rosidl_generator_c__visibility_control.h
+ /home/waritt/robotsim_ws/build/rrr_robot_interfaces/rosidl_generator_c/rrr_robot_interfaces/msg/rosidl_generator_c__visibility_control.h \
+ /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string_functions.h

@@ -68,6 +68,21 @@ bool rrr_robot_interfaces__srv__rrr_mode__request__convert_from_py(PyObject * _p
     Py_DECREF(encoded_field);
     Py_DECREF(field);
   }
+  {  // ref
+    PyObject * field = PyObject_GetAttrString(_pymsg, "ref");
+    if (!field) {
+      return false;
+    }
+    assert(PyUnicode_Check(field));
+    PyObject * encoded_field = PyUnicode_AsUTF8String(field);
+    if (!encoded_field) {
+      Py_DECREF(field);
+      return false;
+    }
+    rosidl_runtime_c__String__assign(&ros_message->ref, PyBytes_AS_STRING(encoded_field));
+    Py_DECREF(encoded_field);
+    Py_DECREF(field);
+  }
 
   return true;
 }
@@ -101,6 +116,23 @@ PyObject * rrr_robot_interfaces__srv__rrr_mode__request__convert_to_py(void * ra
     }
     {
       int rc = PyObject_SetAttrString(_pymessage, "mode_call", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // ref
+    PyObject * field = NULL;
+    field = PyUnicode_DecodeUTF8(
+      ros_message->ref.data,
+      strlen(ros_message->ref.data),
+      "replace");
+    if (!field) {
+      return NULL;
+    }
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "ref", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

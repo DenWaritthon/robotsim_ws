@@ -117,6 +117,10 @@ ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspecti
 // #include "rrr_robot_interfaces/srv/detail/rrr_target_path__struct.h"
 
 
+// Include directives for member types
+// Member `message`
+#include "rosidl_runtime_c/string_functions.h"
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -136,7 +140,24 @@ void rrr_robot_interfaces__srv__RRRTargetPath_Response__rosidl_typesupport_intro
   rrr_robot_interfaces__srv__RRRTargetPath_Response__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember rrr_robot_interfaces__srv__RRRTargetPath_Response__rosidl_typesupport_introspection_c__RRRTargetPath_Response_message_member_array[1] = {
+static rosidl_typesupport_introspection_c__MessageMember rrr_robot_interfaces__srv__RRRTargetPath_Response__rosidl_typesupport_introspection_c__RRRTargetPath_Response_message_member_array[2] = {
+  {
+    "message",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(rrr_robot_interfaces__srv__RRRTargetPath_Response, message),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
   {
     "all_done",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
@@ -159,7 +180,7 @@ static rosidl_typesupport_introspection_c__MessageMember rrr_robot_interfaces__s
 static const rosidl_typesupport_introspection_c__MessageMembers rrr_robot_interfaces__srv__RRRTargetPath_Response__rosidl_typesupport_introspection_c__RRRTargetPath_Response_message_members = {
   "rrr_robot_interfaces__srv",  // message namespace
   "RRRTargetPath_Response",  // message name
-  1,  // number of fields
+  2,  // number of fields
   sizeof(rrr_robot_interfaces__srv__RRRTargetPath_Response),
   rrr_robot_interfaces__srv__RRRTargetPath_Response__rosidl_typesupport_introspection_c__RRRTargetPath_Response_message_member_array,  // message members
   rrr_robot_interfaces__srv__RRRTargetPath_Response__rosidl_typesupport_introspection_c__RRRTargetPath_Response_init_function,  // function to initialize message memory (memory has to be allocated)

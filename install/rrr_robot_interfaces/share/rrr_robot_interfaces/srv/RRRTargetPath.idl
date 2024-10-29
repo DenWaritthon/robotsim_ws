@@ -11,6 +11,8 @@ module rrr_robot_interfaces {
       boolean call_path;
     };
     struct RRRTargetPath_Response {
+      string message;
+
       boolean all_done;
     };
   };

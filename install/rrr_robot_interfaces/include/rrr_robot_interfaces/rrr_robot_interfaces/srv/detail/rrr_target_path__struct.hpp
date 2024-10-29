@@ -166,26 +166,37 @@ struct RRRTargetPath_Response_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
+      this->message = "";
       this->all_done = false;
     }
   }
 
   explicit RRRTargetPath_Response_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : message(_alloc)
   {
-    (void)_alloc;
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
+      this->message = "";
       this->all_done = false;
     }
   }
 
   // field types and members
+  using _message_type =
+    std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>;
+  _message_type message;
   using _all_done_type =
     bool;
   _all_done_type all_done;
 
   // setters for named parameter idiom
+  Type & set__message(
+    const std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> & _arg)
+  {
+    this->message = _arg;
+    return *this;
+  }
   Type & set__all_done(
     const bool & _arg)
   {
@@ -235,6 +246,9 @@ struct RRRTargetPath_Response_
   // comparison operators
   bool operator==(const RRRTargetPath_Response_ & other) const
   {
+    if (this->message != other.message) {
+      return false;
+    }
     if (this->all_done != other.all_done) {
       return false;
     }

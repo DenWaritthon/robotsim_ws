@@ -134,6 +134,13 @@ inline void to_flow_style_yaml(
   std::ostream & out)
 {
   out << "{";
+  // member: message
+  {
+    out << "message: ";
+    rosidl_generator_traits::value_to_yaml(msg.message, out);
+    out << ", ";
+  }
+
   // member: all_done
   {
     out << "all_done: ";
@@ -146,6 +153,16 @@ inline void to_block_style_yaml(
   const RRRTargetPath_Response & msg,
   std::ostream & out, size_t indentation = 0)
 {
+  // member: message
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "message: ";
+    rosidl_generator_traits::value_to_yaml(msg.message, out);
+    out << "\n";
+  }
+
   // member: all_done
   {
     if (indentation > 0) {
@@ -203,11 +220,11 @@ inline const char * name<rrr_robot_interfaces::srv::RRRTargetPath_Response>()
 
 template<>
 struct has_fixed_size<rrr_robot_interfaces::srv::RRRTargetPath_Response>
-  : std::integral_constant<bool, true> {};
+  : std::integral_constant<bool, false> {};
 
 template<>
 struct has_bounded_size<rrr_robot_interfaces::srv::RRRTargetPath_Response>
-  : std::integral_constant<bool, true> {};
+  : std::integral_constant<bool, false> {};
 
 template<>
 struct is_message<rrr_robot_interfaces::srv::RRRTargetPath_Response>

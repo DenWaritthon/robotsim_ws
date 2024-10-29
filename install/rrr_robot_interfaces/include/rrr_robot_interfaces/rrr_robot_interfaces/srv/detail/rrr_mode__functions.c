@@ -12,6 +12,7 @@
 
 // Include directives for member types
 // Member `mode_call`
+// Member `ref`
 #include "rosidl_runtime_c/string_functions.h"
 
 bool
@@ -22,6 +23,11 @@ rrr_robot_interfaces__srv__RRRMode_Request__init(rrr_robot_interfaces__srv__RRRM
   }
   // mode_call
   if (!rosidl_runtime_c__String__init(&msg->mode_call)) {
+    rrr_robot_interfaces__srv__RRRMode_Request__fini(msg);
+    return false;
+  }
+  // ref
+  if (!rosidl_runtime_c__String__init(&msg->ref)) {
     rrr_robot_interfaces__srv__RRRMode_Request__fini(msg);
     return false;
   }
@@ -36,6 +42,8 @@ rrr_robot_interfaces__srv__RRRMode_Request__fini(rrr_robot_interfaces__srv__RRRM
   }
   // mode_call
   rosidl_runtime_c__String__fini(&msg->mode_call);
+  // ref
+  rosidl_runtime_c__String__fini(&msg->ref);
 }
 
 bool
@@ -47,6 +55,12 @@ rrr_robot_interfaces__srv__RRRMode_Request__are_equal(const rrr_robot_interfaces
   // mode_call
   if (!rosidl_runtime_c__String__are_equal(
       &(lhs->mode_call), &(rhs->mode_call)))
+  {
+    return false;
+  }
+  // ref
+  if (!rosidl_runtime_c__String__are_equal(
+      &(lhs->ref), &(rhs->ref)))
   {
     return false;
   }
@@ -64,6 +78,12 @@ rrr_robot_interfaces__srv__RRRMode_Request__copy(
   // mode_call
   if (!rosidl_runtime_c__String__copy(
       &(input->mode_call), &(output->mode_call)))
+  {
+    return false;
+  }
+  // ref
+  if (!rosidl_runtime_c__String__copy(
+      &(input->ref), &(output->ref)))
   {
     return false;
   }

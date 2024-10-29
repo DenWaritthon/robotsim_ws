@@ -14,7 +14,7 @@ class ControllerNode(Node):
 
         # Service server
         self.create_service(RRRMode ,'/Mode' ,self.mode_callback )
-        self.create_service(RRRTeleop ,'/Ref' ,self.ref_callback )
+        self.create_service(RRRMode ,'/Ref' ,self.ref_callback )
 
         # Service client
         self.teleop_call_group = MutuallyExclusiveCallbackGroup()
@@ -69,8 +69,8 @@ class ControllerNode(Node):
 
         return response
     
-    def ref_callback(self,request:RRRTeleop.Request , response:RRRTeleop.Response):
-        ref_select = request.frame_ref
+    def ref_callback(self,request:RRRMode.Request , response:RRRMode.Response):
+        ref_select = request.ref
         if self.mode == 'Teleop':
             if ref_select == 'base':
                 self.teleop_select = 0

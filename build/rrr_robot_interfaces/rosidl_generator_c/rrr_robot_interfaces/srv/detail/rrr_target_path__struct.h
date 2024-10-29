@@ -37,9 +37,14 @@ typedef struct rrr_robot_interfaces__srv__RRRTargetPath_Request__Sequence
 
 // Constants defined in the message
 
+// Include directives for member types
+// Member 'message'
+#include "rosidl_runtime_c/string.h"
+
 /// Struct defined in srv/RRRTargetPath in the package rrr_robot_interfaces.
 typedef struct rrr_robot_interfaces__srv__RRRTargetPath_Response
 {
+  rosidl_runtime_c__String message;
   bool all_done;
 } rrr_robot_interfaces__srv__RRRTargetPath_Response;
 

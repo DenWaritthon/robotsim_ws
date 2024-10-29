@@ -21,16 +21,32 @@ namespace srv
 namespace builder
 {
 
+class Init_RRRMode_Request_ref
+{
+public:
+  explicit Init_RRRMode_Request_ref(::rrr_robot_interfaces::srv::RRRMode_Request & msg)
+  : msg_(msg)
+  {}
+  ::rrr_robot_interfaces::srv::RRRMode_Request ref(::rrr_robot_interfaces::srv::RRRMode_Request::_ref_type arg)
+  {
+    msg_.ref = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::rrr_robot_interfaces::srv::RRRMode_Request msg_;
+};
+
 class Init_RRRMode_Request_mode_call
 {
 public:
   Init_RRRMode_Request_mode_call()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  ::rrr_robot_interfaces::srv::RRRMode_Request mode_call(::rrr_robot_interfaces::srv::RRRMode_Request::_mode_call_type arg)
+  Init_RRRMode_Request_ref mode_call(::rrr_robot_interfaces::srv::RRRMode_Request::_mode_call_type arg)
   {
     msg_.mode_call = std::move(arg);
-    return std::move(msg_);
+    return Init_RRRMode_Request_ref(msg_);
   }
 
 private:

@@ -243,10 +243,19 @@ rrr_robot_interfaces__srv__RRRTargetPath_Request__Sequence__copy(
 }
 
 
+// Include directives for member types
+// Member `message`
+#include "rosidl_runtime_c/string_functions.h"
+
 bool
 rrr_robot_interfaces__srv__RRRTargetPath_Response__init(rrr_robot_interfaces__srv__RRRTargetPath_Response * msg)
 {
   if (!msg) {
+    return false;
+  }
+  // message
+  if (!rosidl_runtime_c__String__init(&msg->message)) {
+    rrr_robot_interfaces__srv__RRRTargetPath_Response__fini(msg);
     return false;
   }
   // all_done
@@ -259,6 +268,8 @@ rrr_robot_interfaces__srv__RRRTargetPath_Response__fini(rrr_robot_interfaces__sr
   if (!msg) {
     return;
   }
+  // message
+  rosidl_runtime_c__String__fini(&msg->message);
   // all_done
 }
 
@@ -266,6 +277,12 @@ bool
 rrr_robot_interfaces__srv__RRRTargetPath_Response__are_equal(const rrr_robot_interfaces__srv__RRRTargetPath_Response * lhs, const rrr_robot_interfaces__srv__RRRTargetPath_Response * rhs)
 {
   if (!lhs || !rhs) {
+    return false;
+  }
+  // message
+  if (!rosidl_runtime_c__String__are_equal(
+      &(lhs->message), &(rhs->message)))
+  {
     return false;
   }
   // all_done
@@ -281,6 +298,12 @@ rrr_robot_interfaces__srv__RRRTargetPath_Response__copy(
   rrr_robot_interfaces__srv__RRRTargetPath_Response * output)
 {
   if (!input || !output) {
+    return false;
+  }
+  // message
+  if (!rosidl_runtime_c__String__copy(
+      &(input->message), &(output->message)))
+  {
     return false;
   }
   // all_done

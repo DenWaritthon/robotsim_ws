@@ -131,6 +131,9 @@ PyObject * rrr_robot_interfaces__srv__rrr_target_path__request__convert_to_py(vo
 // already included above
 // #include "rrr_robot_interfaces/srv/detail/rrr_target_path__functions.h"
 
+#include "rosidl_runtime_c/string.h"
+#include "rosidl_runtime_c/string_functions.h"
+
 
 ROSIDL_GENERATOR_C_EXPORT
 bool rrr_robot_interfaces__srv__rrr_target_path__response__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -165,6 +168,21 @@ bool rrr_robot_interfaces__srv__rrr_target_path__response__convert_from_py(PyObj
     assert(strncmp("rrr_robot_interfaces.srv._rrr_target_path.RRRTargetPath_Response", full_classname_dest, 64) == 0);
   }
   rrr_robot_interfaces__srv__RRRTargetPath_Response * ros_message = _ros_message;
+  {  // message
+    PyObject * field = PyObject_GetAttrString(_pymsg, "message");
+    if (!field) {
+      return false;
+    }
+    assert(PyUnicode_Check(field));
+    PyObject * encoded_field = PyUnicode_AsUTF8String(field);
+    if (!encoded_field) {
+      Py_DECREF(field);
+      return false;
+    }
+    rosidl_runtime_c__String__assign(&ros_message->message, PyBytes_AS_STRING(encoded_field));
+    Py_DECREF(encoded_field);
+    Py_DECREF(field);
+  }
   {  // all_done
     PyObject * field = PyObject_GetAttrString(_pymsg, "all_done");
     if (!field) {
@@ -196,6 +214,23 @@ PyObject * rrr_robot_interfaces__srv__rrr_target_path__response__convert_to_py(v
     }
   }
   rrr_robot_interfaces__srv__RRRTargetPath_Response * ros_message = (rrr_robot_interfaces__srv__RRRTargetPath_Response *)raw_ros_message;
+  {  // message
+    PyObject * field = NULL;
+    field = PyUnicode_DecodeUTF8(
+      ros_message->message.data,
+      strlen(ros_message->message.data),
+      "replace");
+    if (!field) {
+      return NULL;
+    }
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "message", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
   {  // all_done
     PyObject * field = NULL;
     field = PyBool_FromLong(ros_message->all_done ? 1 : 0);

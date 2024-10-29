@@ -254,6 +254,8 @@ extern "C"
 {
 #endif
 
+#include "rosidl_runtime_c/string.h"  // message
+#include "rosidl_runtime_c/string_functions.h"  // message
 
 // forward declare type support functions
 
@@ -269,6 +271,20 @@ static bool _RRRTargetPath_Response__cdr_serialize(
     return false;
   }
   const _RRRTargetPath_Response__ros_msg_type * ros_message = static_cast<const _RRRTargetPath_Response__ros_msg_type *>(untyped_ros_message);
+  // Field name: message
+  {
+    const rosidl_runtime_c__String * str = &ros_message->message;
+    if (str->capacity == 0 || str->capacity <= str->size) {
+      fprintf(stderr, "string capacity not greater than size\n");
+      return false;
+    }
+    if (str->data[str->size] != '\0') {
+      fprintf(stderr, "string not null-terminated\n");
+      return false;
+    }
+    cdr << str->data;
+  }
+
   // Field name: all_done
   {
     cdr << (ros_message->all_done ? true : false);
@@ -286,6 +302,22 @@ static bool _RRRTargetPath_Response__cdr_deserialize(
     return false;
   }
   _RRRTargetPath_Response__ros_msg_type * ros_message = static_cast<_RRRTargetPath_Response__ros_msg_type *>(untyped_ros_message);
+  // Field name: message
+  {
+    std::string tmp;
+    cdr >> tmp;
+    if (!ros_message->message.data) {
+      rosidl_runtime_c__String__init(&ros_message->message);
+    }
+    bool succeeded = rosidl_runtime_c__String__assign(
+      &ros_message->message,
+      tmp.c_str());
+    if (!succeeded) {
+      fprintf(stderr, "failed to assign string into field 'message'\n");
+      return false;
+    }
+  }
+
   // Field name: all_done
   {
     uint8_t tmp;
@@ -310,6 +342,10 @@ size_t get_serialized_size_rrr_robot_interfaces__srv__RRRTargetPath_Response(
   (void)padding;
   (void)wchar_size;
 
+  // field.name message
+  current_alignment += padding +
+    eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+    (ros_message->message.size + 1);
   // field.name all_done
   {
     size_t item_size = sizeof(ros_message->all_done);
@@ -345,6 +381,18 @@ size_t max_serialized_size_rrr_robot_interfaces__srv__RRRTargetPath_Response(
   full_bounded = true;
   is_plain = true;
 
+  // member: message
+  {
+    size_t array_size = 1;
+
+    full_bounded = false;
+    is_plain = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
+  }
   // member: all_done
   {
     size_t array_size = 1;

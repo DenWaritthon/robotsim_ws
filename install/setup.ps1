@@ -26,6 +26,7 @@ _colcon_prefix_chain_powershell_source_script "/opt/ros/humble\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/waritt/ros2_ws/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/waritt/uros_ws/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/waritt/urosrobotsim_ws/install\local_setup.ps1"
+_colcon_prefix_chain_powershell_source_script "/home/waritt/fun5mini_ws/install\local_setup.ps1"
 
 # source this prefix
 $env:COLCON_CURRENT_PREFIX=(Split-Path $PSCommandPath -Parent)

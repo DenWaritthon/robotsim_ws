@@ -173,7 +173,24 @@ void RRRTargetPath_Response_fini_function(void * message_memory)
   typed_message->~RRRTargetPath_Response();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember RRRTargetPath_Response_message_member_array[1] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember RRRTargetPath_Response_message_member_array[2] = {
+  {
+    "message",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_STRING,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(rrr_robot_interfaces::srv::RRRTargetPath_Response, message),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr,  // fetch(index, &value) function pointer
+    nullptr,  // assign(index, value) function pointer
+    nullptr  // resize(index) function pointer
+  },
   {
     "all_done",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
@@ -196,7 +213,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember RRRTargetPath
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers RRRTargetPath_Response_message_members = {
   "rrr_robot_interfaces::srv",  // message namespace
   "RRRTargetPath_Response",  // message name
-  1,  // number of fields
+  2,  // number of fields
   sizeof(rrr_robot_interfaces::srv::RRRTargetPath_Response),
   RRRTargetPath_Response_message_member_array,  // message members
   RRRTargetPath_Response_init_function,  // function to initialize message memory (memory has to be allocated)
